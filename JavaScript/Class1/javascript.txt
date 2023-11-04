@@ -1,0 +1,22 @@
+JavaScript 1:
+
+Variables
+objects
+array
+Javascript executes data from memory
+Javascript runtime enviroment
+Javascript codespace
+Arithmetic operators
+Assignmennt operators
+
+Two type of memory - STACK, HEAP
+HEAP - Is a stock of memory. Everything front of you. - No-premitive data
+STACK - Stack is organised memory in stack. - Premitive data
+
+Link of sirs screen ->
+https://app.eraser.io/workspace/gGQB8RlwymdEcdUOA4Wn
+
+Question I occur - >
+Why those data type called premitive data type?
+
+
