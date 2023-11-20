@@ -28,17 +28,25 @@
 // }
 
 // logical operator - &&, ||
-let googleToken = "m@gmail.com";
-let githubToken = "manik@github.com";
+// let googleToken = "m@gmail.com";
+// let githubToken = "manik@github.com";
 
-if (googleToken || githubToken ){
-    if (googleToken){
-        console.log("Logged in by google");
-    }
-    else (
-        console.log("Logged in with github")
-    )
-}
-else {
-    console.log("Login using google or github")
-}
+// if (googleToken || githubToken ){
+//     if (googleToken){
+//         console.log("Logged in by google");
+//     }
+//     else (
+//         console.log("Logged in with github")
+//     )
+// }
+// else {
+//     console.log("Login using google or github")
+// }
+
+let age  = 17;
+
+age >17
+? console.log("You get the driving licence")
+: console.log("You are not eligibel")
+
+const getLisence = age >= 18? "true part" : "fasle"
