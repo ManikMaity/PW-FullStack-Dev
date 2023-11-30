@@ -1,0 +1,2 @@
+Dry principle
+fuction helps us to impleplement dry principle --> DRY = do not reapeat yourself
