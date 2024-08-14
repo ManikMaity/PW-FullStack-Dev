@@ -8,18 +8,21 @@ function ResultScreen({display, winner, btnOnClick, draw}) {
     display : display,
   }
 
-  // function findWinner (winner, draw){
-  //   let winner = "";
-  //   if (draw){
-  //     winner = "No one won"
-  //   }
-  //   else if (winner)
-  // }
+  function findWinner (winner, draw){
+    let winnerText = "";
+    if (draw){
+      winnerText = "No one won"
+      return winnerText;
+    }
+    else{
+      return winner == "X" ? "O won" : "X won";
+    }
+  }
 
   return (
     <div style={style} className="overlay">
       <div className='result-container'>
-          <h3></h3>
+          <h3>{findWinner(winner, draw)}</h3>
           <Button text={'Restart'} onClick={btnOnClick}/>
       </div>
     </div>
