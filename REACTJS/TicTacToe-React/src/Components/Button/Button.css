@@ -1,0 +1,15 @@
+.gameBtn{
+    border: none;
+    outline: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    background-color: rgba(182, 255, 223, 0.275);
+    color: rgb(85, 201, 153);
+    border: 2px solid rgb(103, 205, 163);
+    transition: all 0.3s;
+    cursor: pointer;
+}
+
+.gameBtn:hover{
+    opacity: 0.6;
+}

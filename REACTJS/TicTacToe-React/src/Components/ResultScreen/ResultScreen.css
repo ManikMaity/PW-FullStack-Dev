@@ -1,0 +1,25 @@
+.result-container{
+    padding: 20px 40px;
+    background-color: #355c4999;
+    max-width: 400px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+    gap: 15px;
+}
+
+.result-container h3{
+    font-size: 2rem;
+    text-align: center;
+}
+
+.overlay{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000000be;
+    z-index: 5;
+    display: grid;
+    place-content: center;
+}

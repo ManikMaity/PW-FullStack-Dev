@@ -1,0 +1,11 @@
+.cell-container{
+    height: 350px;
+    width: 350px;
+    background-color: #383838;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    border: 10px solid #383838;
+}
