@@ -56,6 +56,7 @@ function GameBoardContainer() {
         setPositions(["", "", "","", "", "","", "", ""]);
         setGameRunning(true);
         setShowResult("none");
+        setMatchDraw(false);
         document.querySelectorAll(".cell").forEach(ele => {
             ele.textContent = "";
         })

@@ -15,3 +15,4 @@ window.alert();
 window.conform(); - true / false
 window.navigator.
 window.navigator.mediaDevices.enumerateDevices().then((res) => {console.log(res)}); // get user devices
+- this in console also return window
