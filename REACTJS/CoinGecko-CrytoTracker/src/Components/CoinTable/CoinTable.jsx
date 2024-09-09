@@ -1,19 +1,27 @@
-import React, { useContext, useEffect, useState } from 'react'
 import { fetchCoinData } from '../../services/fetchCoinData'
 import { useQuery } from 'react-query';
-import { CurrencyContext } from '../../context/CusrrencyContext';
+import { useNavigate } from 'react-router-dom';
+import currencyStore from "../../state/store"
+import { useState } from 'react';
 
 const CoinTable = () => {
-  const {currency} = useContext(CurrencyContext)
+
+  const {currency} = currencyStore()
+  const navigator = useNavigate();
+
 
   let [page, setPage] = useState(1);
 
   const {data, isLoading, isError, error} = useQuery(["coin", page, currency], () => fetchCoinData(page, currency), {
-    // retry : 2,
-    // retryDelay : 1000,
+    retry : 2,
+    retryDelay : 1000,
     cacheTime : 1000*60*2,
     staleTime : 1000*60*10
   })
+
+  function handleCoinRedirect (id){
+      navigator(`/details/${id}`)
+  }
 
   if (isLoading){
     return  (<div className='w-full h-80 grid place-content-center'>
@@ -23,6 +31,8 @@ const CoinTable = () => {
   if (isError){
     return <div>{error.message}</div>
   }
+
+
 
  
   return (
@@ -50,12 +60,12 @@ const CoinTable = () => {
       <div className='w-full grid grid-flow-row gap-4 text-center rounded-b-md py-4 px-2'>
         {data?.map(coin => {
           return (
-            <div key={coin.id} className='w-full items-center text-center justify-center bg-transparent text-white grid grid-cols-4 text-left font-semibold'>
+            <div key={coin.id} onClick={() => handleCoinRedirect(coin.id)} className='w-full items-center justify-center bg-transparent text-white grid grid-cols-4 text-left font-semibold'>
         
               <div className='flex gap-4 items-center text-left'>
                 <div className='w-20 h-20  flex items-center'>
 
-                <img src={coin.image} className='w-full' alt="" />
+                <img src={coin.image} className='w-full' loading='lazy'/>
                 </div>
                 <div className=''>
                 <p>{coin.name}</p>

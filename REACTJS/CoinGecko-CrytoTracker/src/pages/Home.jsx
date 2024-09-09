@@ -6,7 +6,6 @@ import CoinTable from '../Components/CoinTable/CoinTable'
 const Home = () => {
   return (
     <div>
-         <Navbar />
         <Banner/>
         <CoinTable/>
     </div>
