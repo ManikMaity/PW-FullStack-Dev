@@ -1,0 +1,202 @@
+[
+   {
+      "name": "Element and Tag in HTML.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Element and Tag in HTML.pdf"
+   },
+   {
+      "name": "Fundamentals of Internet.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Fundamentals of Internet.pdf"
+   },
+   {
+      "name": "Grouping of HTML elements.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Grouping of HTML elements.pdf"
+   },
+   {
+      "name": "HTML comments.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/HTML comments.pdf"
+   },
+   {
+      "name": "Introduction to web development.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Introduction to web development.pdf"
+   },
+   {
+      "name": "Useful VS code extensions.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Useful VS code extensions.pdf"
+   },
+   {
+      "name": "Web Browser.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Web Browser.pdf"
+   },
+   {
+      "name": "Web Development Tools.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Web Development Tools.pdf"
+   },
+   {
+      "name": "Writing a Hello World program in HTML.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes1/Writing a Hello World program in HTML.pdf"
+   },
+   {
+      "name": "1. HTML media.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes2/1. HTML media.pdf"
+   },
+   {
+      "name": "2. HTML Forms.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes2/2. HTML Forms.pdf"
+   },
+   {
+      "name": "3. HTML form element.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes2/3. HTML form element.pdf"
+   },
+   {
+      "name": "4. HTML Events.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes2/4. HTML Events.pdf"
+   },
+   {
+      "name": "SEO - Search Engine Optimization.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes3/SEO - Search Engine Optimization.pdf"
+   },
+   {
+      "name": "1.HTML5.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes4/1.HTML5.pdf"
+   },
+   {
+      "name": "2.HTML Entities.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes4/2.HTML Entities.pdf"
+   },
+   {
+      "name": "3.Accessibility in HTML.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes4/3.Accessibility in HTML.pdf"
+   },
+   {
+      "name": "4.Chrome dev tools for HTML.pdf",
+      "path": "../../Notes-PDFs/01HTML-Notes-PDFs/Notes4/4.Chrome dev tools for HTML.pdf"
+   },
+   {
+      "name": "1. Introduction to CSS.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/1. Introduction to CSS.pdf"
+   },
+   {
+      "name": "2. Ways to add CSS.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/2. Ways to add CSS.pdf"
+   },
+   {
+      "name": "3. Comments in CSS.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/3. Comments in CSS.pdf"
+   },
+   {
+      "name": "4. Useful VS code extensions.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/4. Useful VS code extensions.pdf"
+   },
+   {
+      "name": "5. Simple Selectors in CSS.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/5. Simple Selectors in CSS.pdf"
+   },
+   {
+      "name": "6. Class Naming Convention in CSS.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/6. Class Naming Convention in CSS.pdf"
+   },
+   {
+      "name": "7. Color.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/7. Color.pdf"
+   },
+   {
+      "name": "8.Background.pdf",
+      "path": "../../Notes-PDFs/02CSS-Notes-PDFs/Notes1/8.Background.pdf"
+   },
+   {
+      "name": "Array Methods .pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Array Methods .pdf"
+   },
+   {
+      "name": "Closure.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Closure.pdf"
+   },
+   {
+      "name": "DOM Manipulation - Sanket Singh (1).pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/DOM Manipulation - Sanket Singh (1).pdf"
+   },
+   {
+      "name": "Important functions in JavaScript.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Important functions in JavaScript.pdf"
+   },
+   {
+      "name": "Introduction to Array.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Introduction to Array.pdf"
+   },
+   {
+      "name": "Introduction to OOPS.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Introduction to OOPS.pdf"
+   },
+   {
+      "name": "Math.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Math.pdf"
+   },
+   {
+      "name": "Number.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Number.pdf"
+   },
+   {
+      "name": "Object Constructor (1).pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Object Constructor (1).pdf"
+   },
+   {
+      "name": "Promise Constructor.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Promise Constructor.pdf"
+   },
+   {
+      "name": "Prototypes in JavaScript.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Prototypes in JavaScript.pdf"
+   },
+   {
+      "name": "Regex in Javascript.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Regex in Javascript.pdf"
+   },
+   {
+      "name": "Scope.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Scope.pdf"
+   },
+   {
+      "name": "String.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/String.pdf"
+   },
+   {
+      "name": "Window Object.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/Window Object.pdf"
+   },
+   {
+      "name": "_Date & Eval in JavaScript.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/_Date & Eval in JavaScript.pdf"
+   },
+   {
+      "name": "_let and const.pdf",
+      "path": "../../Notes-PDFs/03JS-Notes-PDFs/_let and const.pdf"
+   },
+   {
+      "name": "General Command on Git-2.pdf",
+      "path": "../../Notes-PDFs/GITHUB/General Command on Git-2.pdf"
+   },
+   {
+      "name": "Git deep dive _  importance of .gitignore-3.pdf",
+      "path": "../../Notes-PDFs/GITHUB/Git deep dive _  importance of .gitignore-3.pdf"
+   },
+   {
+      "name": "Git in VS Code-7.pdf",
+      "path": "../../Notes-PDFs/GITHUB/Git in VS Code-7.pdf"
+   },
+   {
+      "name": "GitHub Desktop-5.pdf",
+      "path": "../../Notes-PDFs/GITHUB/GitHub Desktop-5.pdf"
+   },
+   {
+      "name": "Github-4.pdf",
+      "path": "../../Notes-PDFs/GITHUB/Github-4.pdf"
+   },
+   {
+      "name": "Useful VS Code extension-6.pdf",
+      "path": "../../Notes-PDFs/GITHUB/Useful VS Code extension-6.pdf"
+   },
+   {
+      "name": "Version Control System-1.pdf",
+      "path": "../../Notes-PDFs/GITHUB/Version Control System-1.pdf"
+   }
+]
