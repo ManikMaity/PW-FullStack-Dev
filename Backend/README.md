@@ -58,3 +58,32 @@ Example of monolith architecture - Stakeoverflow
 - No loss of message.
 
 ### Simple example -
+![](./Images/Screenshot%202024-09-13%20234001.png)
+- The network communication need to be happen in a reliable way so, we need to use TCP.
+- TCP is a connection based protocol and it is used for network communication.
+- UCP is a connectionless protocol and it is used for network communication.
+- We need to think of a mechanism where recepitient dont have to refresh for each message.
+- We can do that using these way:
+1. Short polling - In this client again and again ask for message by making request to server.
+2. Long polling - In this client ask for message by making long request to server.
+
+### Long polling v/s Short polling
+- Long polling is same as short polling but in long polling we wait for a certain time for each message.
+
+## Web Socket 
+- WebSocket is different from Socket address (IP + port).
+- Web socket is a connection based protocol build on TCP.
+- It helps in setup bidirectional persistence connection between two clients.
+- In bidirectional connection, whenever the server want server sends message to client without waiting for client to send message.
+- To setup websocket we need to send a HTTP request from one mechine to another mechine and another mechine will send an Aknowledgement to the first mechine then HTTP request will updraded to websocket.
+- There are now days lot of library for making web socket connenction easily. Ex - Socket.io
+- After  websocket connection we can send and recieve message without making any HTTP request.
+
+### What if the client gone offline?
+- In that case we we can implement message queue mechanism, so that message can be sent to client when client is back online.
+- In message queue mechanism we can store message in queue and send them to client.
+- There is diffrent way to implement message queue in JS easily. Ex - RabbitMQ, Kafka.
+![Message Queue](./Images/WhatsApp%20Image%202024-09-17%20at%2000.17.09_f0bee681.jpg)
+### Sync vs Async Comunication
+- In Sync communication we make a request and wait for response.
+- In Async communication we make a request and dont wait for response.
