@@ -87,3 +87,5 @@ Example of monolith architecture - Stakeoverflow
 ### Sync vs Async Comunication
 - In Sync communication we make a request and wait for response.
 - In Async communication we make a request and dont wait for response.
+- When we are making request to get the catelogs we wait for response so its a sync communication.
+- But when we chat with user we dont wait for response so its an async communication user chat is stored in message queue.
