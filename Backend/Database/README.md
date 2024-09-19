@@ -90,6 +90,32 @@ SELECT * FROM USERS;
 ```sql
 INSERT INTO USERS (EMAIL, PASSWORD, USERNAME) VALUES ("hitam@gmail.com", "123", "Hitam"), ("kiran@gmail.com", "kiran12", "Kiran"), ("subhas@gmail.com", "subhas12", "Shibas"); -- Bulk insert, insert multiple rows togather
 ```
+- Filtering data in select
+- There are lot of operators in mysql like ==, >=, <= , AND, OR, NOT, IN, BETWEEN, LIKE, etc.
+```sql
+SELECT * FROM POST WHERE `USER_ID` = "MANIK2003" AND `CREATED_AT` > "2024-09-01";
+```
+- LIKE operator is used for searching data based on some pattern.
+- %NAME% is used to search for title with name in it.
+```SQL
+SELECT * FROM POST WHERE `TITLE` LIKE "%NAME%";
+SELECT * FROM POST WHERE `BODY` LIKE "%MAITY";
+```
+
+```sql
+-- Sort data in select query
+SELECT * FROM POST ORDER BY CREATED_AT DESC;
+```
+
+```SQL
+-- This is to delete data.
+-- Use condition to delete which data.
+DELETE FROM POST WHERE ID = 4;
+```
+
+```SQL
+UPDATE POST SET `BODY` = "I AM A SELF TOUGHT DEVELOPER" WHERE ID = 7;
+```
 
 - In sql database data is stored in rows and columns.
 - Every column store one property of data. (Like name, age, address, etc.)
@@ -100,7 +126,103 @@ INSERT INTO USERS (EMAIL, PASSWORD, USERNAME) VALUES ("hitam@gmail.com", "123", 
 - JSON data type: json
 - Date and time data type: date, time, datetime
 
+
 ### Note -
 - Its not like no-sql are better than sql databases.
 - Its not like sql databases are better than no-sql databases.
 - Its more like for what purpose you are using the database.
+
+
+
+
+Here’s a breakdown of the five categories of SQL commands, along with example MySQL command snippets for each:
+
+### 1. **DDL – Data Definition Language**
+DDL commands are used to define and modify database structures (e.g., tables, schemas).
+
+- **Commands**: `CREATE`, `ALTER`, `DROP`, `TRUNCATE`, `RENAME`
+
+Example (Create a table):
+```sql
+CREATE TABLE employees (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100),
+    position VARCHAR(50),
+    salary DECIMAL(10, 2)
+);
+```
+
+Example (Alter a table to add a new column):
+```sql
+ALTER TABLE employees ADD COLUMN hire_date DATE;
+```
+
+### 2. **DQL – Data Query Language**
+DQL is used to query and retrieve data from the database.
+
+- **Command**: `SELECT`
+
+Example (Retrieve employee data):
+```sql
+SELECT name, position, salary FROM employees WHERE salary > 50000;
+```
+
+### 3. **DML – Data Manipulation Language**
+DML commands are used to insert, update, delete data within the database.
+
+- **Commands**: `INSERT`, `UPDATE`, `DELETE`
+
+Example (Insert a new record):
+```sql
+INSERT INTO employees (name, position, salary) VALUES ('John Doe', 'Manager', 75000);
+```
+
+Example (Update an employee's salary):
+```sql
+UPDATE employees SET salary = 80000 WHERE name = 'John Doe';
+```
+
+Example (Delete an employee record):
+```sql
+DELETE FROM employees WHERE id = 5;
+```
+
+### 4. **DCL – Data Control Language**
+DCL commands are used to grant or revoke access permissions on the database.
+
+- **Commands**: `GRANT`, `REVOKE`
+
+Example (Grant permission to a user):
+```sql
+GRANT SELECT, INSERT ON employees TO 'user'@'localhost';
+```
+
+Example (Revoke permission from a user):
+```sql
+REVOKE INSERT ON employees FROM 'user'@'localhost';
+```
+
+### 5. **TCL – Transaction Control Language**
+TCL commands are used to manage transactions in a database, ensuring the integrity of the data.
+
+- **Commands**: `COMMIT`, `ROLLBACK`, `SAVEPOINT`
+
+Example (Transaction control):
+```sql
+START TRANSACTION;
+
+UPDATE employees SET salary = 85000 WHERE id = 3;
+
+COMMIT;  -- Saves the changes
+```
+
+Example (Rollback a transaction):
+```sql
+START TRANSACTION;
+
+UPDATE employees SET salary = 90000 WHERE id = 3;
+
+ROLLBACK;  -- Reverts the update
+```
+
+These categories represent the fundamental ways SQL commands are organized to manage database systems.
