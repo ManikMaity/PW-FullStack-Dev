@@ -1,4 +1,4 @@
-# Databases
+# Databases Class 1
 - The traditional way to store data is file storage.
 - Databases will give you an organized way to store and retrieve data.
 - Example of a database: MySQL, PostgreSQL, SQLite, etc.
@@ -226,3 +226,147 @@ ROLLBACK;  -- Reverts the update
 ```
 
 These categories represent the fundamental ways SQL commands are organized to manage database systems.
+
+# Databases Class 2 
+- When we have a huge database then we can use pagination to send limited amount of data one time.
+- We can `LIMIT` in sql query to send limited amount of data one time.
+- `OFSET` is used to specify the starting point.
+- This is used pagination.
+```sql
+SELECT * FROM properties LIMIT 5 OFFSET 2;
+-- This will send 5 data from 2nd index
+```
+
+### Delete all the records
+- Using `DELETE FROM`
+```sql
+-- This will delete all the comments data.
+-- This not the preferred way.
+DELETE FROM comments;
+```
+- Using `TRUNCATE TABLE`
+```sql
+-- faster way to delete all the data.
+-- It internally drops the table and recereates it.
+TRUNCATE TABLE COMMENTS;
+```
+
+- ENUM type
+```sql
+CREATE TABLE LIKES (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    USER_ID INT,
+    CREATED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    LIKEABLE_ID INT,
+    LIKEABLE_TYPE ENUM("Post", "Comment") -- This will be used so it take the value "Post" or "Comment"
+)
+```
+
+### Constrains in mySQl
+The following constraints are commonly used in SQL:
+
+NOT NULL - Ensures that a column cannot have a NULL value
+UNIQUE - Ensures that all values in a column are different
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Uniquely identifies each row in a table
+FOREIGN KEY - Prevents actions that would destroy links between tables
+CHECK - Ensures that the values in a column satisfies a specific condition
+DEFAULT - Sets a default value for a column if no value is specified
+CREATE INDEX - Used to create and retrieve data from the database very quickly
+
+```sql
+
+```
+
+### foreign key
+A **foreign key** in MySQL is a constraint that links two tables by referencing a column in one table (the "child" table) to a column in another table (the "parent" table). It ensures that the value in the child table's foreign key column must exist in the parent table's referenced column. 
+
+For example, if the `likes` table has a `USER_ID` column that references the `ID` in the `users` table, it ensures that a like can only be associated with an existing user. If you try to insert a `user_id` in `likes` that doesn’t exist in `users`, MySQL will throw an error.
+```sql
+CREATE TABLE LIKES (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    USER_ID INT,
+    CREATED_AT TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    LIKEABLE_ID INT,
+    LIKEABLE_TYPE ENUM("Post", "Comment"),-- This will be used so it take the value "Post" or "Comment"
+    FOREIGN KEY (USER_ID) REFERENCES USERS(ID) -- This will check if the user exists
+)
+```
+
+### JOINS 
+- Joins helps combine info from two or more table.
+- A JOIN clause is used to combine rows from two or more tables, based on a related column between them.
+- No every type of joints supported my every dbms 
+```sql
+SELECT * FROM likes JOIN users ON likes.USER_ID = users.ID JOIN comments ON comments.`USER_ID` = likes.`USER_ID`;
+```
+
+### Types of Joints
+- Supported Types of Joins in MySQL
+- INNER JOIN: Returns records that have matching values in both tables
+- LEFT JOIN: Returns all records from the left table, and the matched records from the right table
+- RIGHT JOIN: Returns all records from the right table, and the matched records from the left table
+- CROSS JOIN: Returns all records from both tables
+
+![](joints.png);
+
+## Relational
+
+- Meaning of Relational means that it is two tables with a relation between them.
+- 1 : 1 Realationship
+- 1 : M Realationship
+- M : 1 Realationship
+- M : M Realationship
+
+### Leetcode database example
+- User
+```sql
+{
+    id,
+    name,
+    username,
+    email,
+    password
+}
+
+- Question
+{
+    id,
+    title,
+    description, -- Markdown
+    submitted_by, -- refer user.id
+    created_at,
+    deficulty enum("easy", "medium", "hard"),
+    
+}
+
+- Question tag
+{
+    id,
+    tag_id,
+    question_tag -- refer question.id
+}
+
+- Tag table 
+{
+    id,
+    tag_name
+}
+
+- Submition 
+{
+    user_id,
+    question_id,
+    solved date,
+    submition_status enum("correct", "wrong"),
+    submited_code,
+    forgein key (user_id, question_id)
+}
+
+- Likes
+{
+    user_id,
+    question_id,
+    likes_at,
+    forgein key (user_id, question_id)
+}
+```
