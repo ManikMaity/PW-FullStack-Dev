@@ -26,6 +26,18 @@ export const findAllPost = async () => {
 }
 
 
+export const getPaginatedPosts = async (page, limit) => {
+    try{
+        const post = await PostModel.find().skip((page - 1) * limit).limit(limit);
+        return post;
+    }
+    catch(err){
+        throw new Error(err)
+        console.log(err)
+    }
+}
+
+
 export const findPostById = async (id) => {
     try{
         const post = await PostModel.findById(id)

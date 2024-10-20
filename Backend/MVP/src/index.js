@@ -1,7 +1,6 @@
 import express from "express";
-import userRouter from "./Routes/user.js";
-import adminRouter from "./Routes/admin.js";
 import connectDB from "./config/dbConfig.js";
+import apiRouter from "./Routes/apiRouter.js";
 
 
 const app = express();
@@ -10,8 +9,7 @@ app.use(express.json());
 
 await connectDB();
 
-app.use("/user", userRouter);
-app.use("/admin", adminRouter);
+app.use("/api", apiRouter);
 
 app.listen(PORT, () => {
     console.log("Server started on port http://localhost:3000");

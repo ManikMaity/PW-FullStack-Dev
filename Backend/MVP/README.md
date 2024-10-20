@@ -121,6 +121,7 @@ const postSchema = new Schema({
 
 ## HOMEWORK - 
 - Upload the image in cloudinary and store thr url in the database.
+- Done
 ```js
 import { v2 as cloudinary } from "cloudinary";
 import { CLOUDINARY_KEY, CLOUDINARY_SECRECT } from "./serverConfig.js";
@@ -151,3 +152,53 @@ export async function uploadImageInCloudinary(imagename) {
   }
 }
 ```
+
+## Routes
+- We can use `express` router to handle the routes.
+- When we use something like `https://example.com/api/user` that mean its a api route
+- There is other type of route like `http://example.com/user` that mean its a web route
+
+### API Versioning
+- Using this we can make multiple version of the api.
+- Like `https://example.com/api/v1/user` and `https://example.com/api/v2/user`
+- We can define single route inside our index.js like `/api` and in the api route we can define the other routes like `/user, /post, `etc. We can use `apiRouter.use()` to do that.
+```js
+import express from "express";
+import userRouter from "./user.js";
+import postRouter from "./post.js";
+const apiRouter = express.Router();
+
+apiRouter.use("/user", userRouter);
+apiRouter.use("/post", postRouter);
+
+
+export default apiRouter;
+```
+### TASK make a V1 router and make a V2 router 
+
+```js
+import express from "express";
+import userRouter from "../user.js";
+import postRouter from "../post.js";
+const v1Router = express.Router();
+
+v1Router.use("/user", userRouter);
+v1Router.use("/post", postRouter);
+
+
+export default v1Router;
+```
+
+```js
+import express from "express";
+import userRouter from "./user.js";
+import postRouter from "./post.js";
+import v1Router from "./v1/v1Router.js";
+const apiRouter = express.Router();
+
+apiRouter.use("/v1", v1Router);
+
+export default apiRouter;
+```
+
+- Done, now we can use `http://localhost:3000/api/v1/post/all` to access the all post.

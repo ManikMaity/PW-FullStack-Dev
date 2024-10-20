@@ -1,13 +1,16 @@
-import { createPostService } from "../services/postService.js";
+import UserModel from "../Model/user.model.js";
 
-export async function postController(req, res) {
-    try{
-        const {content, userId, image} = req.body;
-        await createPostService(content, userId, image);
-        res.json({msg : "Post created successfully"});
+export async function getProfileController(req, res){
+    try {
+      const email = req.query.email;
+      console.log(email);
+      const user = await UserModel.findOne({ email });
+      if (user) {
+        res.json(user);
+      } else {
+        throw new Error("User Not Found");
+      }
+    } catch (err) {
+      res.json({ msg: err.message });
     }
-    catch(err){
-        res.status(500).json({msg : err.message});
-    }
-
-}
+  }
