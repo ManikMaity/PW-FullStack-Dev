@@ -1,4 +1,4 @@
-import { createPostService, getPaginatedPostsService } from "../services/postService.js";
+import { createPostService, deletePostService, getPaginatedPostsService, updatePostService } from "../services/postService.js";
 
 export async function postController(req, res) {
     try{
@@ -35,3 +35,42 @@ export async function getAllPostController(req, res) {
     }
 }
 
+export async function deletePostController(req, res){
+    try{
+        const id = req.query.id;
+        await deletePostService(id);
+        res.json({
+            success : true,
+            message : "Post deleted successfully"
+        })
+    }
+    catch(err){
+        res.status(500).json({
+            success : false,
+            message : err.message
+        })
+    }
+}
+
+
+export async function postUpdateController(req, res){
+    try{
+        // const {id, content, image} = req.body;
+        const id = req.body.id;
+        const content = req.body.content || "";
+        const image = req.body.image || "";
+        console.log(id, content, image, "Post Controller");
+        const data = await updatePostService(id, content, image);
+        res.json({
+            success : true,
+            message : "Post updated successfully",
+        })
+    }
+    catch(err){
+        console.log(err);
+        res.status(500).json({
+            success : false,
+            message : err.message
+        })
+    }
+}

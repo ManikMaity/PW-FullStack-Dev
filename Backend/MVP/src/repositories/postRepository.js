@@ -58,3 +58,26 @@ export const findPostById = async (id) => {
         console.log(err)
     }
 }
+
+export async function deletePostById(id) {
+    try{
+       const data =  await PostModel.findByIdAndDelete(id);
+        return data;
+    }
+    catch(err){
+        throw new Error(err);
+        
+    }   
+}
+
+export async function updatePostById(id, data) {
+    try{
+        const responseData = await PostModel.findByIdAndUpdate(id, {
+            $set : data});
+        return responseData;
+    }
+    catch(err){
+        throw new Error(err);
+    }
+    
+}
