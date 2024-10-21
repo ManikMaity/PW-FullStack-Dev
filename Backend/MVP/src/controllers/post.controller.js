@@ -1,4 +1,4 @@
-import { createPostService } from "../services/postService.js";
+import { createPostService, getPaginatedPostsService } from "../services/postService.js";
 
 export async function postController(req, res) {
     try{
@@ -12,12 +12,26 @@ export async function postController(req, res) {
 
 }
 
+// We want it to be paginated format with limit and offset
+// ex - http://localhost:3000/api/post/all?offset=1&limit=10
+
 export async function getAllPostController(req, res) {
     try{
-        res.json({msg : "Post Page"});
+        const offset = req.query.offset || 0;
+        const limit = req.query.limit || 10;
+        const data = await getPaginatedPostsService(offset, limit);
+        res.json({
+            success : true,
+            message : "Post fetched successfully",
+            data : data
+        });
     }
     catch(err){
-        res.status(500).json({msg : err.message});
+        res.status(500).json({
+            success : false,
+            message : err.message,
+            data : null
+        });
     }
 }
 

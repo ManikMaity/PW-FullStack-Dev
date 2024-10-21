@@ -26,14 +26,25 @@ export const findAllPost = async () => {
 }
 
 
-export const getPaginatedPosts = async (page, limit) => {
+export const getPaginatedPosts = async (offset, limit) => {
     try{
-        const post = await PostModel.find().skip((page - 1) * limit).limit(limit);
+        const post = await PostModel.find().sort({"createdAt" : -1}).skip(offset).limit(limit);
         return post;
     }
     catch(err){
         throw new Error(err)
         console.log(err)
+    }
+}
+
+export const getTotalPosts = async () => {
+    try{
+        const post = await PostModel.countDocuments();
+        return post
+    }
+    catch(err){
+        console.log(err)
+        throw new Error(err)
     }
 }
 
