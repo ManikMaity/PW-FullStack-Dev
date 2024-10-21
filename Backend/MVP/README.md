@@ -203,3 +203,9 @@ export default apiRouter;
 
 - Done, now we can use `http://localhost:3000/api/v1/post/all` to access the all post.
 - FIXDone: All the other routes like `user` and `post` should be inside the v1 folder.
+
+## TASK - 
+- Done - Implement the `delete` and `update` route
+
+## HW -
+- Implement a logic to delete the exiting image from cloudinary when image is updated or post deleted.

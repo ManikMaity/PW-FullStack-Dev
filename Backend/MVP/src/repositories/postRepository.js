@@ -73,7 +73,7 @@ export async function deletePostById(id) {
 export async function updatePostById(id, data) {
     try{
         const responseData = await PostModel.findByIdAndUpdate(id, {
-            $set : data});
+            $set : data}, {new : true});
         return responseData;
     }
     catch(err){

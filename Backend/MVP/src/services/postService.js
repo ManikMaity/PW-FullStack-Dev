@@ -47,7 +47,7 @@ export async function updatePostService(id, content, image) {
     try{
 
         let imageUrl = "";
-        if (image != "") {
+        if (image) {
             imageUrl = await uploadImageInCloudinary(image);
         }
 

@@ -64,6 +64,7 @@ export async function postUpdateController(req, res){
         res.json({
             success : true,
             message : "Post updated successfully",
+            data
         })
     }
     catch(err){
