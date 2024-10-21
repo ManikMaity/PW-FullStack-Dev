@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+import { optional } from "zod";
 
 const postSchema = new Schema({
     postContent : {
@@ -20,6 +21,10 @@ const postSchema = new Schema({
         //     },
         //     message : "Invalid Image url"
         // }
+    },
+    imageName : {
+        type : String,
+        optional : true
     }
 
 }, {timestamps : true});

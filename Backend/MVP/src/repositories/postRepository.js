@@ -1,11 +1,12 @@
 import PostModel from "../Model/post.model.js"
 
-export const createPost = async (content, userId, image) => {
+export const createPost = async (content, userId, image, imageName) => {
     try{
         const post = await PostModel.create({
             postContent : content,
             user : userId,
-            image : image
+            image : image,
+            imageName : imageName
         })
         console.log("Post created successfully.")
     }

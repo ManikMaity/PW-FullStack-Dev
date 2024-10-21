@@ -1,7 +1,8 @@
-import { uploadImageInCloudinary } from "../config/cloudinaryConfig.js";
+import { deleteImageFromCloudinary, uploadImageInCloudinary } from "../config/cloudinaryConfig.js";
 import {
   createPost,
   deletePostById,
+  findPostById,
   getPaginatedPosts,
   getTotalPosts,
   updatePostById,
@@ -10,8 +11,8 @@ import {
 export async function createPostService(content, userId, image) {
   try {
     // Add cloudinary to upload image and get a url
-    const imageUrl = await uploadImageInCloudinary(image);
-    await createPost(content, userId, imageUrl);
+    const { url : imageUrl, public_id : imageName } = await uploadImageInCloudinary(image);
+    await createPost(content, userId, imageUrl, imageName);
   } catch (err) {
     throw new Error(err);
   }
@@ -35,6 +36,9 @@ export async function getPaginatedPostsService(offset, limit) {
 export async function deletePostService(id) {
     try{
         const data = await deletePostById(id)
+        if (data) {
+          await deleteImageFromCloudinary(data?.imageName);
+        }
         return data
     }
     catch(err){
@@ -46,14 +50,17 @@ export async function deletePostService(id) {
 export async function updatePostService(id, content, image) {
     try{
 
-        let imageUrl = "";
+        let uploadData;
         if (image) {
-            imageUrl = await uploadImageInCloudinary(image);
+            const post = await findPostById(id);
+            await deleteImageFromCloudinary(post?.imageName);
+            uploadData = await uploadImageInCloudinary(image);
         }
 
         const data = {
             postContent : content,
-            image : imageUrl
+            image : uploadData?.url,
+            imageName : uploadData?.public_id
         }
         
         Object.keys(data).forEach((k) => data[k] == '' && delete data[k]);
