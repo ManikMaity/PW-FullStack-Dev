@@ -209,3 +209,18 @@ export default apiRouter;
 
 ## HW -
 - Implement a logic to delete the exiting image from cloudinary when image is updated or post deleted.
+
+## Triggers 
+- Every database have triggers.
+- Triggers are used to do just before and after some action happens in the database.
+- In mongoose triggers are called hook and there is `pre` and `post` hooks.
+- `pre` hooks are called before the action and `post` hooks are called after the action.
+- These are used in the `Schema` or `Model` Layer.
+```js
+userSchema.pre("save", function modifyPassword(next){
+    const user = this;
+    const hashedPassword = bcrypt.hashSync(user.password, SALT_ROUND);
+    user.password = hashedPassword;
+    next();
+})
+```

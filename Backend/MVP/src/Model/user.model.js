@@ -1,4 +1,6 @@
 import mongoose, { Schema } from "mongoose";
+import bcrypt from "bcrypt";
+import { SALT_ROUND } from "../config/serverConfig.js";
 
 const userSchema = new Schema({
     username : {
@@ -23,6 +25,13 @@ const userSchema = new Schema({
         required : true
     }
 }, {timestamps : true});
+
+userSchema.pre("save", function modifyPassword(next){
+    const user = this;
+    const hashedPassword = bcrypt.hashSync(user.password, SALT_ROUND);
+    user.password = hashedPassword;
+    next();
+})
 
 const UserModel = mongoose.model("User", userSchema);
 
