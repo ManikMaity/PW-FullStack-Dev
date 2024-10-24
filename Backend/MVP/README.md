@@ -224,3 +224,21 @@ userSchema.pre("save", function modifyPassword(next){
     next();
 })
 ```
+## Authentication
+- Authentication is the process of verifying that a user is who they say they are.
+- Most common way of authentication is with JWT.
+
+### [JWT](www.jwt.io)
+- JSON Web Token
+- JWT have 3 parts - header, payload, signature
+- Payload is the data that we want to store in the token like {_id : "mani123}.
+- header provide information about the type of token
+- signature is used to verify and make the token. Secret key.
+**Note** - The signin details like email, password should come fro rew body because if send 
+them confidential using peram or query string it will be stored in history of the user.
+
+### Steps In Signin
+- Fist get will get the email and password from the body
+- then we have to find the user in the database using email
+- them uisng bycrypt compare the database password with the user given password
+- Then make a JWT token uisng user._id and send it to the user
