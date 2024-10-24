@@ -242,3 +242,7 @@ them confidential using peram or query string it will be stored in history of th
 - then we have to find the user in the database using email
 - them uisng bycrypt compare the database password with the user given password
 - Then make a JWT token uisng user._id and send it to the user
+
+### TASK -
+Make a signin functionality using JWT
+- Done ✔️

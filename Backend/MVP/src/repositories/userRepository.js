@@ -10,6 +10,17 @@ export async function findUserByEmail(email) {
     }
 }
 
+
+export async function  findUserById(id) {
+    try{
+        const user = await UserModel.findById(id);
+        return user;
+    }
+    catch(err){
+        throw err;
+    }
+}
+
 export async function createUser(username, email, password) {
     try{
         const user = await UserModel.create({username, email, password})
