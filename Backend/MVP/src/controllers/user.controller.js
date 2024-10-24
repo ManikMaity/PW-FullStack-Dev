@@ -1,5 +1,3 @@
-import UserModel from "../Model/user.model.js";
-
 export async function getProfileController(req, res) {
   try {
     const user = req.user;

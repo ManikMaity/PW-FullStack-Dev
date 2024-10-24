@@ -246,3 +246,6 @@ them confidential using peram or query string it will be stored in history of th
 ### TASK -
 Make a signin functionality using JWT
 - Done ✔️
+
+## Tommorow Class Authorization - 
+- HW - Exprore Authorization
