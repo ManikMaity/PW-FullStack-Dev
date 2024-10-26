@@ -7,20 +7,19 @@ const postSchema = new Schema({
         reqiured : true,  
     },
     user : {
-        // type : Schema.ObjectId,
-        type : String,
-        // ref : "User",
+        type : Schema.ObjectId,
+        ref : "User",
         reqiured : true
     },
     image : {
         type : String,
         reqiured : true,
-        // validate : {
-        //     validator : (value) => {
-        //         return /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp|svg))$/i.test(value)
-        //     },
-        //     message : "Invalid Image url"
-        // }
+        validate : {
+            validator : (value) => {
+                return /^(https?:\/\/.*\.(?:png|jpg|jpeg|gif|bmp|webp|svg))$/i.test(value)
+            },
+            message : "Invalid Image url"
+        }
     },
     imageName : {
         type : String,

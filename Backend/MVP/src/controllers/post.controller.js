@@ -2,7 +2,8 @@ import { createPostService, deletePostService, getPaginatedPostsService, updateP
 
 export async function postController(req, res) {
     try{
-        const {content, userId, image} = req.body;
+        const userId = req.user._id;
+        const {content, image} = req.body;
         await createPostService(content, userId, image);
         res.json({msg : "Post created successfully"});
     }
@@ -37,8 +38,9 @@ export async function getAllPostController(req, res) {
 
 export async function deletePostController(req, res){
     try{
+        const userId = req.user._id;
         const id = req.query.id;
-        await deletePostService(id);
+        await deletePostService(id, userId);
         res.json({
             success : true,
             message : "Post deleted successfully"

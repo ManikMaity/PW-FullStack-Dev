@@ -2,13 +2,14 @@ import PostModel from "../Model/post.model.js"
 
 export const createPost = async (content, userId, image, imageName) => {
     try{
+        console.log(userId);
         const post = await PostModel.create({
             postContent : content,
             user : userId,
             image : image,
             imageName : imageName
         })
-        console.log("Post created successfully.")
+        console.log("Post created successfully.", post);
     }
     catch(err){
         throw new Error(err)
@@ -29,7 +30,7 @@ export const findAllPost = async () => {
 
 export const getPaginatedPosts = async (offset, limit) => {
     try{
-        const post = await PostModel.find().sort({"createdAt" : -1}).skip(offset).limit(limit);
+        const post = await PostModel.find().sort({"createdAt" : -1}).skip(offset).limit(limit).populate("user", "username email _id");
         return post;
     }
     catch(err){
@@ -60,14 +61,19 @@ export const findPostById = async (id) => {
     }
 }
 
-export async function deletePostById(id) {
+export async function deletePostById(id, userId) {
     try{
-       const data =  await PostModel.findByIdAndDelete(id);
-        return data;
+        const post = await PostModel.findById(id).populate("user", "_id");
+        if (post.user._id.toString() == userId.toString()) {
+            const data =  await PostModel.findByIdAndDelete(id);
+            return data;
+        }else{
+           throw new Error("You are not authorized to delete this post");
+           
+        }
     }
     catch(err){
-        throw new Error(err);
-        
+        throw new Error(err);   
     }   
 }
 

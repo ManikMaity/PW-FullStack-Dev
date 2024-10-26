@@ -249,3 +249,31 @@ Make a signin functionality using JWT
 
 ## Tommorow Class Authorization - 
 - HW - Exprore Authorization
+
+## Authorization
+- TASK  - Get the user id from auth and provide it in post object - Done ✔️
+- Get user name and email details from ref data in post object in mongodb without doing an extra database call - Done ✔️
+
+### Populate
+- We can use the `.populate()` method on the `user` field in your Mongoose query. This will retrieve the referenced User document directly within the same query, allowing you to access the user's name and other details without an extra call.
+
+```javascript
+export const getPaginatedPosts = async (offset, limit) => {
+    try {
+        const posts = await PostModel.find()
+            .sort({ "createdAt": -1 })
+            .skip(offset)
+            .limit(limit)
+            .populate("user", "username email _id"); // Populating only the 'name' field of the 'user'
+
+        return posts;
+    } catch (err) {
+        console.error(err);
+        throw new Error(err);
+    }
+};
+```
+
+In the `.populate("user", "name")` part:
+- The first argument (`"user"`) specifies the field you want to populate.
+- The second argument (`"name"`) specifies the fields you want to retrieve from the `User` document. You can list additional fields (e.g., `"name email"`) if needed.

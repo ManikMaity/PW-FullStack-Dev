@@ -33,9 +33,9 @@ export async function getPaginatedPostsService(offset, limit) {
   }
 }
 
-export async function deletePostService(id) {
+export async function deletePostService(id, userId) {
     try{
-        const data = await deletePostById(id)
+        const data = await deletePostById(id, userId)
         if (data) {
           await deleteImageFromCloudinary(data?.imageName);
         }

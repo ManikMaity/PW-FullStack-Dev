@@ -6,6 +6,13 @@ import { findUserById } from "../repositories/userRepository.js";
 export async function isAuthenticated(req, res, next) {
     try{
         const token = req.headers.token;
+        if (!token) {
+            throw {
+                status : 401,
+                message : "Token not found",
+                success : false
+            }
+        }
         const decodedData = JWT.verify(token, JWT_SECRECT);
         const user = await findUserById(decodedData.userId);
         if (!user) {
