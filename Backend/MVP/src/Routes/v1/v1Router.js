@@ -11,6 +11,25 @@ const v1Router = express.Router();
 
 v1Router.use("/user", userRouter);
 v1Router.use("/post", postRouter);
+
+/**
+ * @swagger
+ * /signup:
+ *  post:
+ *     summary: Create user
+ *     description: Create a new user
+ *     requestBody:
+ *      required: true
+ *      content:
+ *          application/json:
+ *             
+ *     responses:
+ *          200:
+ *              description: User created successfully
+ *          500:
+ *              description: Internal server error
+ *          400:
+ */
 v1Router.post("/signup", validate(zodSignupValidation), signupController)
 v1Router.post("/signin", validate(zodSigninValidation), signinController);
 

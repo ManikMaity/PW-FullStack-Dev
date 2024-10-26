@@ -277,3 +277,94 @@ export const getPaginatedPosts = async (offset, limit) => {
 In the `.populate("user", "name")` part:
 - The first argument (`"user"`) specifies the field you want to populate.
 - The second argument (`"name"`) specifies the fields you want to retrieve from the `User` document. You can list additional fields (e.g., `"name email"`) if needed.
+
+---
+**TASK -** :The owner of the post can delete his post.
+- Done ✔️
+
+## Authorisation
+- Authorisation is the process of deciding what a user is allowed to do.
+- Authorisation process is done after authentication.
+- `role`property is used in the `userSchema` to define the role of the user.
+```js
+    role : {
+        type : String,
+        enum : ["user", "admin"],
+        default : "user"
+    }
+```
+- **TASK** - Attatch auth and authorisation to update post route so that only admin can edit it.
+- Done ✔️
+
+## Documentation
+- We can use `swagger-jsdoc` to generate good and understandable documentation for our API.
+- [swagger-jsdoc](https://swagger.io/docs/)
+- `swagger-jsdoc` is a library that generates swagger documentation for our API.
+
+### Process
+- Import `swagger-jsdoc` and `swagger-ui-express` npm packages.
+- import `swaggerJsdoc` and `swaggerUi` from `swagger-jsdoc` and `swagger-ui-express` respectively in `index.js`.
+- `swaggerJsdoc` takes `options` as an argument.
+- Have to make a `swaggerOption.js` file in `utils` folder.
+```js
+export const options = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'ImageGram API',
+        version: '1.0.0',
+        description: 'API for ImageGram',
+      },
+      servers: [
+        {
+          url: 'http://localhost:3000/api/v1',
+        },
+      ],
+    },
+    apis: ['./src/Routes/v1/*.js'], // files containing annotations as above
+  };
+```
+- `swaggerJsdoc` takes `options` as an argument and returns `swaggerDocument`.
+- Then we have to use `swaggerUi.serve` and `swaggerUi.setup` to serve the swagger documentation.
+```js
+// index.js
+import swaggerJsdoc from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
+import {options} from "./utils/swaggerOption.js"
+
+const swaggerDocument = swaggerJsdoc(options);
+
+const app = express();
+const PORT = 3000;
+app.use(express.json());
+
+await connectDB();
+app.use("/api", apiRouter);
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.listen(PORT, () => {
+    console.log("Server started on port http://localhost:3000");
+});
+```
+- Now we can write the documentation for api route using comments.
+```js
+/**
+ * @swagger
+ * /signup:
+ *  post:
+ *     summary: Create user
+ *     description: Create a new user
+ *     requestBody:
+ *      required: true
+ *      content:
+ *          application/json:
+ *             
+ *     responses:
+ *          200:
+ *              description: User created successfully
+ *          500:
+ *              description: Internal server error
+ *          400:
+ */
+v1Router.post("/signup", validate(zodSignupValidation), signupController)
+```

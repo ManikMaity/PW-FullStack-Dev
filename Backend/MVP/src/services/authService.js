@@ -33,7 +33,7 @@ export async function signinService(email, password) {
         }
         if (bcrypt.compareSync(password, user.password)){
             // make a token with user id which will expire in 7 days 
-            const token = JWT.sign({userId : user._id }, JWT_SECRECT, {expiresIn : 3600 * 168});
+            const token = JWT.sign({userId : user._id, role : user.role || "user" }, JWT_SECRECT, {expiresIn : 3600 * 168});
             return token;
         }
         else {
