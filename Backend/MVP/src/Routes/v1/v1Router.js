@@ -5,12 +5,14 @@ import { signinController, signupController } from "../../controllers/auth.contr
 import { validate } from "../../validators/zodValidator.js";
 import { zodSignupValidation } from "../../validators/zodSignupValidator.js";
 import { zodSigninValidation } from "../../validators/zodSigninValidator.js";
+import commentRouter from "./comment.js";
 const v1Router = express.Router();
 
 
 
 v1Router.use("/user", userRouter);
 v1Router.use("/post", postRouter);
+v1Router.use("/comment", commentRouter)
 
 /**
  * @swagger
