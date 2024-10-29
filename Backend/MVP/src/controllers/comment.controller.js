@@ -1,4 +1,4 @@
-import { createCommentService } from "../services/commentService.js"
+import { createCommentService, getCommentsService } from "../services/commentService.js"
 
 export async function check(req, res) {
     res.json({
@@ -33,4 +33,37 @@ export async function createCommentController(req, res) {
             })
         }
     } 
+}
+
+
+export async function getCommentsController(req, res) {
+    try{
+        const postId = req.params.postId;
+        console.log(postId)
+        const comments = await getCommentsService(postId);
+        res.json({
+            success : true,
+            message : "Comments fetched successfully",
+            data : comments
+        })
+    }
+    catch(err){
+        console.log(err)
+        if (err.status) {
+            res.status(err.status).json({
+                success : false,
+                message : err.message
+            })
+        }
+        else {
+            res.status(500).json({
+                success : false,
+                message : err.message
+            })
+        }
+    }
+}
+
+export async function updateCommentController(req, res) {
+    
 }

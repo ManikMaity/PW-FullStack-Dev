@@ -1,4 +1,4 @@
-import { createCommentById } from "../repositories/comment.repo.js";
+import { createCommentById, getCommentsByPostId } from "../repositories/comment.repo.js";
 
 export async function createCommentService(content, postId, userId) {
     try {
@@ -15,5 +15,15 @@ export async function createCommentService(content, postId, userId) {
     }
     catch (err) {
         throw err;
+    }
+}
+
+export async function getCommentsService(postId) {
+    try {
+        const comments = await getCommentsByPostId(postId);
+        return comments;
+    }
+    catch(err){
+        throw err
     }
 }

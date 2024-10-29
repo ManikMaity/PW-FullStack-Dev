@@ -13,7 +13,7 @@ app.use(express.json());
 
 await connectDB();
 app.use("/api", apiRouter);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.listen(PORT, () => {
     console.log("Server started on port http://localhost:3000");
