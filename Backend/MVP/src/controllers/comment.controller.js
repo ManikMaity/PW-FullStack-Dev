@@ -2,6 +2,7 @@ import {
   createCommentService,
   deleteCommentService,
   getCommentsService,
+  getPaginatedCommentsService,
   upadteCommentService,
 } from "../services/commentService.js";
 
@@ -117,4 +118,32 @@ export async function deleteCommentController(req, res) {
             });
         }
     }
+}
+
+export async function getPaginatedCommentsController(req, res) {
+  try {
+    const offset = req.query.offset || 0;
+    const limit = req.query.limit || 10;
+    const postId = req.params.postId;
+    const data = await getPaginatedCommentsService(offset, limit, postId);
+    res.json({
+      success: true,
+      message: "Comments fetched successfully",
+      data: data,
+    });
+  }
+  catch(err) {
+    if (err.status) {
+      res.status(err.status).json({
+        success: false,
+        message: err.message,
+      })
+    }
+    else {
+      res.status(500).json({
+        success: false,
+        message: err.message,
+      })
+    }
+  }
 }

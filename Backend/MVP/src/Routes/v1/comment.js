@@ -1,5 +1,5 @@
 import express from "express";
-import { check, createCommentController, deleteCommentController, getCommentsController, updateCommentController } from "../../controllers/comment.controller.js";
+import { check, createCommentController, deleteCommentController, getCommentsController, getPaginatedCommentsController, updateCommentController } from "../../controllers/comment.controller.js";
 import { isAuthenticated } from "../../middleware/isAuthenticated.js";
 import { validate } from "../../validators/zodValidator.js";
 import zodCommentValidation from "../../validators/zodCommentValidator.js";
@@ -146,6 +146,38 @@ commentRouter.put("/:commentId", isAuthenticated, updateCommentController)
  * 
  */
 commentRouter.delete("/:commentId", isAuthenticated, deleteCommentController)
+
+// get paginated comments
+/**
+ * @swagger
+ * /comment/671c7fab0224e96dd540e086/paginated?offset={offset}&limit={limit}:
+ *  get:
+ *     summary: get paginated comments for post
+ *     description: get paginated comments for post
+ *     parameters:
+ *      - in: query
+ *        name: offset
+ *        type: string
+ *        required: true
+ *      - in: query
+ *        name: limit
+ *        type: string
+ *        required: true
+ *      - in: header
+ *        name: token
+ *        type: string
+ *        required: true
+ *     responses:
+ *          200:
+ *              description: Comment fetched successfully
+ *          500:
+ *              description: Internal server error
+ *          400:
+ *              description: Validation error
+ *          401:
+ *              description: Unauthorized
+ */
+commentRouter.get("/:postId/paginated", isAuthenticated, getPaginatedCommentsController)
 
 
 export default commentRouter;

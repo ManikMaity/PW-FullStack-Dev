@@ -1,8 +1,10 @@
 import {
   createCommentById,
   deleteCommentById,
+  getAllCommentsByPostIdCount,
   getCommentById,
   getCommentsByPostId,
+  getPaginatedCommentByPostId,
 } from "../repositories/comment.repo.js";
 
 export async function createCommentService(content, postId, userId) {
@@ -57,27 +59,40 @@ export async function upadteCommentService(commentId, content, userId) {
     comment.content = content;
     await comment.save();
     return comment;
-  } 
-  
-  catch (err) {
+  } catch (err) {
     throw err;
   }
 }
 
 export async function deleteCommentService(commentId, userId) {
-    try{
-        const comment = await getCommentById(commentId);
-        if (comment.userId.toString() !== userId.toString()) {
-            throw {
-                status: 400,
-                message: "You are not authorized to delete this comment",
-                success: false,
-            }
-        }
-        const deletedComment = await deleteCommentById(commentId);
-        return deletedComment;
+  try {
+    const comment = await getCommentById(commentId);
+    if (comment.userId.toString() !== userId.toString()) {
+      throw {
+        status: 400,
+        message: "You are not authorized to delete this comment",
+        success: false,
+      };
     }
-    catch(err){
-        throw err
-    }
+    const deletedComment = await deleteCommentById(commentId);
+    return deletedComment;
+  } catch (err) {
+    throw err;
+  }
+}
+
+export async function getPaginatedCommentsService(offset, limit, postId) {
+  try {
+    const comments = await getPaginatedCommentByPostId(postId, offset, limit);
+    const totalComments = await getAllCommentsByPostIdCount(postId);
+    const totalPages = Math.floor(totalComments / limit);
+    return {
+      comments,
+      totalComments,
+      totalPages,
+    };
+
+  } catch (err) {
+    throw err;
+  }
 }

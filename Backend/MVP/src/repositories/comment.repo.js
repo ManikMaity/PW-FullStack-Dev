@@ -46,3 +46,23 @@ export async function deleteCommentById(commentId) {
         throw err
     }
 }
+
+export async function getPaginatedCommentByPostId(postId, offset, limit) {
+    try {
+        const comments = await CommentModel.find({postId}).skip(offset).limit(limit).populate("userId", "username");
+        return comments
+    }
+    catch (err) {
+        throw err
+    }
+}
+
+export async function getAllCommentsByPostIdCount(postId) {
+    try {
+        const commentCount = await CommentModel.find({postId}).countDocuments();
+        return commentCount;
+    }
+    catch (err) {
+        throw err
+    }
+}
