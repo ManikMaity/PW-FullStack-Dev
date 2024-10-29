@@ -26,3 +26,13 @@ export async function getCommentsByPostId(postId) {
         throw err
     }
 }
+
+export async function getCommentById(commentId) {
+    try {
+        const comment = await CommentModel.findById(commentId);
+        return comment
+    }
+    catch(err){
+        throw err
+    }
+}

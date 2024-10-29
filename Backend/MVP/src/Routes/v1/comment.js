@@ -80,6 +80,42 @@ commentRouter.post("/create", validate(zodCommentValidation), isAuthenticated, c
 commentRouter.get("/:postId", isAuthenticated, getCommentsController)
 
 // update a comment
+/** 
+ * @swagger
+ * /comment/{commentId}:
+ *  put:
+ *     summary: update a comment 
+ *     description: update comment by user
+ *     parameters:
+ *      - in: path
+ *        name: commentId
+ *        type: string
+ *        required: true
+ *      - in: header
+ *        name: token
+ *        type: string
+ *        required: true
+ *     requestBody: 
+ *      required: true
+ *      content: 
+ *          application/json:
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      content:
+ *                          type: string
+ *                          required: true
+ *                          description: Comment content
+ *     responses:
+ *          200:
+ *              description: Comment fetched successfully
+ *          500:
+ *              description: Internal server error
+ *          400:
+ *              description: Validation error
+ *          401:
+ *              description: You are not authorized to update this comment
+ */
 commentRouter.put("/:commentId", isAuthenticated, updateCommentController)
 
 
