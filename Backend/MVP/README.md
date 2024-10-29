@@ -372,4 +372,7 @@ v1Router.post("/signup", validate(zodSignupValidation), signupController)
 **HW** - Implement the `like` and `comment` route
 - There is diff type of likes in instagram like "heart" and "thumbs up".
 - Likes can be done on post and comment.
-- Comment can be done on post and comment.
+- Comment can be done on post and comment. - Done ✔️
+
+## Deployment
+- We can deploy our backend application using `AWS` (paid) or `Render` (free).
