@@ -1,5 +1,6 @@
 import {
   createCommentService,
+  deleteCommentService,
   getCommentsService,
   upadteCommentService,
 } from "../services/commentService.js";
@@ -88,4 +89,32 @@ export async function updateCommentController(req, res) {
       });
     }
   }
+}
+
+
+export async function deleteCommentController(req, res) {
+    try {
+        const commentId = req.params.commentId;
+        const userId = req.user._id;
+        const deletedComment = await deleteCommentService(commentId, userId);
+        res.json({
+            success: true,
+            message: "Comment deleted successfully",
+            data: deletedComment,
+        });
+    }
+    catch (err) {
+        console.log(err);
+        if (err.status) {
+            res.status(err.status).json({
+                success: false,
+                message: err.message,
+            });
+        } else {
+            res.status(500).json({
+                success: false,
+                message: err.message,
+            });
+        }
+    }
 }

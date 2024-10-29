@@ -36,3 +36,13 @@ export async function getCommentById(commentId) {
         throw err
     }
 }
+
+export async function deleteCommentById(commentId) {
+    try{
+        const deletedComment = await CommentModel.findByIdAndDelete(commentId);
+        return deletedComment
+    }
+    catch(err){
+        throw err
+    }
+}

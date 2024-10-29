@@ -1,5 +1,5 @@
 import express from "express";
-import { check, createCommentController, getCommentsController, updateCommentController } from "../../controllers/comment.controller.js";
+import { check, createCommentController, deleteCommentController, getCommentsController, updateCommentController } from "../../controllers/comment.controller.js";
 import { isAuthenticated } from "../../middleware/isAuthenticated.js";
 import { validate } from "../../validators/zodValidator.js";
 import zodCommentValidation from "../../validators/zodCommentValidator.js";
@@ -117,6 +117,35 @@ commentRouter.get("/:postId", isAuthenticated, getCommentsController)
  *              description: You are not authorized to update this comment
  */
 commentRouter.put("/:commentId", isAuthenticated, updateCommentController)
+
+// delete a comment
+/** 
+ * @swagger
+ * /comment/{commentId}:
+ *  delete:
+ *     summary: delete a comment 
+ *     description: delete comment by user
+ *     parameters:
+ *      - in: path
+ *        name: commentId
+ *        type: string
+ *        required: true
+ *      - in: header
+ *        name: token
+ *        type: string
+ *        required: true
+ *     responses:
+ *          200:
+ *              description: Comment deleted successfully
+ *          500:
+ *              description: Internal server error
+ *          400:
+ *              description: Validation error
+ *          401:
+ *              description: You are not authorized to delete this comment
+ * 
+ */
+commentRouter.delete("/:commentId", isAuthenticated, deleteCommentController)
 
 
 export default commentRouter;
