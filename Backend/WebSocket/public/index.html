@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat App</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <form >
+    <h1 class="title">Simple Chat App</h1>
+    <input type="text" name="" placeholder="Enter message" id="message" />
+    <button id="sendBtn">Send</button>
+</form>
+
+    <div class="message-container">
+       
+    </div>
+
+    <script src="socket.io/socket.io.js"></script>
+    <script>
+    const messageEle = document.querySelector("#message");
+    const sendBtnEle = document.querySelector("#sendBtn");
+    const messageContainerEle = document.querySelector(".message-container");
+    const socket = io();
+
+    socket.emit("new-user-joined", "hello");
+
+    socket.on("new-user", (id) => {
+        const userJoinedEle = document.createElement("p");
+        userJoinedEle.classList.add("user-joined");
+        userJoinedEle.innerHTML = `User-${id} joined`;
+        messageContainerEle.appendChild(userJoinedEle);
+    });
+
+    socket.on("user-left", (id) => {
+        const userLeftEle = document.createElement("p");
+        userLeftEle.classList.add("user-joined");
+        userLeftEle.innerHTML = `User-${id} left`;
+        messageContainerEle.appendChild(userLeftEle);
+    });
+
+    socket.on("message", (message) => {
+        const {id, message : msg} = message;
+        const messageEle = document.createElement("div");
+        messageEle.classList.add("message");
+        messageEle.innerHTML = `
+            <p>User-${id}</p>
+            <h4>${msg}</h4>
+        `;
+        messageContainerEle.appendChild(messageEle);
+        console.log(message);
+
+    })
+    sendBtnEle.addEventListener("click", (e) => {
+        e.preventDefault();
+        const message = messageEle.value;
+        socket.emit("message", message);
+        messageEle.value = "";
+        // scroll to bottom
+        messageContainerEle.scrollTop = messageContainerEle.scrollHeight;
+    })
+    
+    </script>
+  </body>
+</html>
