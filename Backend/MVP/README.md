@@ -376,3 +376,45 @@ v1Router.post("/signup", validate(zodSignupValidation), signupController)
 
 ## Deployment
 - We can deploy our backend application using `AWS` (paid) or `Render` (free).
+### Render
+- Go to render.com
+- Click on `new` and select `web service`
+- Chose the project to deploy or give the github public link
+- Chose the deside directory
+- Give the build and start command, ex- `npm install && npm run start`
+- Choose the free plan
+- Fill up .env details
+
+## Custom Loadbalancer
+- Loadbalancer is a server that distributes traffic to multiple servers.
+```
+client ----> loadbalancer ----> server1
+
+                     or   -----> server2
+```
+- first install the `ip` npm package, this will help us to get the public ip of the server client.
+```bash
+npm i ip
+```
+- now we can get the ip address of the client using `ip` package.
+```js
+const ip = require("ip");
+const publicIp = ip.address();
+console.log(publicIp);
+```
+
+## Rate Limiting 
+- Rate limiting is the process of limiting the number of requests that can be made to a server in a given time period.
+- It prevents ddos attacks.
+- npm package - [express-rate-limit](https://www.npmjs.com/package/express-rate-limit)
+- Have to make a limiter object.
+```js
+const limiter = rateLimit({
+    windowMs: 0.5 * 60 * 1000, 
+	limit: 5, 
+    
+})
+```
+```js
+app.use(limiter);
+```
